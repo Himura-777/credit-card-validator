@@ -1,0 +1,9 @@
+Credit Card Validator
+
+Image sources:
+- Visa logo: https://commons.wikimedia.org/wiki/File:Visa_2021.svg
+- Mastercard logo: https://commons.wikimedia.org/wiki/File:Mastercard_2019_logo.svg
+- Mir logo: https://commons.wikimedia.org/wiki/File:Mir_logo.svg
+- Amex logo: https://commons.wikimedia.org/wiki/File:American_Express_logo_(2018).svg
+
+All images are used under their respective licenses.
