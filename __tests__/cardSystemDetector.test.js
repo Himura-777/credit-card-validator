@@ -1,27 +1,38 @@
-const { detectCardSystem } = require('../src/utils/cardSystemDetector');
+import {describe, expect, test} from '@jest/globals'
+import {detectCardSystem} from '../src/utils/cardSystemDetector.js'
 
-describe('detectCardSystem', () => {
+describe('Card System Detection', () => {
 	test('should detect Visa cards', () => {
-		expect(detectCardSystem('4111 1111 1111 1111')).toBe('visa');
-		expect(detectCardSystem('4222 2222 2222 2')).toBe('visa');
+		expect(detectCardSystem('4111111111111111')).toBe('visa');
+		expect(detectCardSystem('4222222222222')).toBe('visa');
 	});
 
-	test('should detect Mastercard cards', () => {
-		expect(detectCardSystem('5555 5555 5555 4444')).toBe('mastercard');
+	test('should detect Mastercard', () => {
+		expect(detectCardSystem('5555555555554444')).toBe('mastercard');
+		expect(detectCardSystem('2223003122003222')).toBe('mastercard');
 	});
 
 	test('should detect Mir cards', () => {
-		expect(detectCardSystem('2200 0000 0000 0004')).toBe('mir');
-		expect(detectCardSystem('2204 1234 5678 9012')).toBe('mir');
+		expect(detectCardSystem('2200770212727079')).toBe('mir');
 	});
 
-	test('should detect Amex cards', () => {
-		expect(detectCardSystem('3782 822463 10005')).toBe('amex');
-		expect(detectCardSystem('3714 496353 98431')).toBe('amex');
+	test('should detect American Express', () => {
+		expect(detectCardSystem('378282246310005')).toBe('amex');
+	});
+
+	test('should detect JCB cards', () => {
+		expect(detectCardSystem('3530111333300000')).toBe('jcb');
+	});
+
+	test('should detect Diners Club', () => {
+		expect(detectCardSystem('36490102462661')).toBe('diners');
+	});
+
+	test('should detect Discover cards', () => {
+		expect(detectCardSystem('6011111111111117')).toBe('discover');
 	});
 
 	test('should return null for unknown cards', () => {
-		expect(detectCardSystem('6011 0000 0000 0004')).toBeNull();
-		expect(detectCardSystem('1234 5678 9012 3456')).toBeNull();
+		expect(detectCardSystem('1234567812345678')).toBeNull();
 	});
 });

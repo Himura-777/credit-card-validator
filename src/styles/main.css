@@ -20,7 +20,7 @@ body {
 
 .card-logos {
     display: flex;
-    gap: 20px;
+    gap: 8px;
     margin: 1rem 0;
 }
 

@@ -1,26 +1,40 @@
-const { validateCardNumber } = require('../src/utils/cardValidator');
+import {describe, expect, test} from '@jest/globals'
+import {validateCardNumber} from '../src/utils/cardValidator.js'
 
-describe('validateCardNumber', () => {
-	test('should validate Visa card numbers', () => {
-		expect(validateCardNumber('4111 1111 1111 1111')).toBe(true);
-		expect(validateCardNumber('4111 1111 1111 1112')).toBe(false);
+describe('Card Number Validation', () => {
+	test('should validate Visa cards', () => {
+		expect(validateCardNumber('4111111111111111')).toBe(true);
+		expect(validateCardNumber('4111111111111112')).toBe(false);
 	});
 
-	test('should validate Mastercard numbers', () => {
-		expect(validateCardNumber('5555 5555 5555 4444')).toBe(true);
-		expect(validateCardNumber('2221 0000 0000 0009')).toBe(true);
-		expect(validateCardNumber('5555 5555 5555 4445')).toBe(false);
+	test('should validate Mastercard', () => {
+		expect(validateCardNumber('5555555555554444')).toBe(true);
+		expect(validateCardNumber('5555555555554445')).toBe(false);
 	});
 
-	test('should validate Mir card numbers', () => {
-		expect(validateCardNumber('2200 0000 0000 0004')).toBe(true);
-		expect(validateCardNumber('2200 0000 0000 0005')).toBe(false);
+	test('should validate Mir cards', () => {
+		expect(validateCardNumber('2200770212727079')).toBe(true);
+		expect(validateCardNumber('2200770212727078')).toBe(false);
 	});
 
-	test('should validate Amex card numbers', () => {
-		expect(validateCardNumber('3782 822463 10005')).toBe(true);
-		expect(validateCardNumber('3714 496353 98431')).toBe(true);
-		expect(validateCardNumber('3782 822463 10006')).toBe(false);
+	test('should validate American Express', () => {
+		expect(validateCardNumber('378282246310005')).toBe(true);
+		expect(validateCardNumber('378282246310006')).toBe(false);
+	});
+
+	test('should validate JCB cards', () => {
+		expect(validateCardNumber('3530111333300000')).toBe(true);
+		expect(validateCardNumber('3530111333300001')).toBe(false);
+	});
+
+	test('should validate Diners Club', () => {
+		expect(validateCardNumber('36490102462661')).toBe(true);
+		expect(validateCardNumber('36490102462662')).toBe(false);
+	});
+
+	test('should validate Discover cards', () => {
+		expect(validateCardNumber('6011111111111117')).toBe(true);
+		expect(validateCardNumber('6011111111111118')).toBe(false);
 	});
 
 	test('should return false for invalid inputs', () => {

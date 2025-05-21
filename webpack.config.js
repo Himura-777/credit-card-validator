@@ -1,14 +1,17 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+import path from 'path'
+import {fileURLToPath} from 'url'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
 
-module.exports = {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
 	entry: './src/index.js',
 	output: {
 		filename: 'main.js',
 		path: path.resolve(__dirname, 'dist'),
 		clean: true,
-		assetModuleFilename: 'images/[name][ext]' // Добавляем эту строку
+		assetModuleFilename: 'images/[name][ext]'
 	},
 	module: {
 		rules: [
@@ -19,9 +22,6 @@ module.exports = {
 			{
 				test: /\.(png|svg|jpg|jpeg|gif)$/i,
 				type: 'asset/resource',
-				generator: {
-					filename: 'images/[name][ext]' // Указываем явный путь для изображений
-				}
 			},
 		],
 	},
@@ -31,8 +31,7 @@ module.exports = {
 		}),
 		new CopyPlugin({
 			patterns: [
-				{ from: 'licenses.txt', to: 'licenses.txt' },
-				{ from: 'src/images', to: 'images' } // Копируем изображения напрямую
+				{ from: 'src/images', to: 'images' }
 			],
 		}),
 	],

@@ -1,7 +1,7 @@
-import puppetteer from 'puppeteer'
+import {jest} from '@jest/globals'
 import {fork} from 'child_process'
 
-jest.setTimeout(30000); // default puppeteer timeout
+jest.setTimeout(30000);
 
 describe('Credit Card Validator form', () => {
 	let browser = null;
