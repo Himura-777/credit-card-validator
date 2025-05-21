@@ -6,7 +6,7 @@ export default {
 	moduleNameMapper: {
 		'^(\\.{1,2}/.*)\\.js$': '$1'
 	},
-	testPathIgnorePatterns: [ 
+	testPathIgnorePatterns: [
 		'/node_modules/',
 		'/__tests__/e2e/'
 	],
